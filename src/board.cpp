@@ -15,3 +15,22 @@ WINDOW* Board::getwin()
 {
     return win;
 }
+
+char** Board::getscreen(WINDOW* win)
+{
+    int xMax, yMax;
+    getmaxyx(win, yMax, xMax);
+    char** c = new char*[yMax];
+    for(int i = 0; i < yMax; i++)
+        c[i] = new char[xMax];
+    for(int i = 0; i < yMax; i++)
+    {
+        for (int j = 0; j < xMax; j++)
+        {
+            wmove(win, i, j);
+            c[i][j] = winch(win);
+        }
+        
+    }
+    return c;
+}
