@@ -9,7 +9,7 @@ int main(int, char**) {
     noecho();
     curs_set(0);
 
-    Board board(40, 120, 0, 0);
+    Board board(35, 120, 0, 0);
 
     getch();
     endwin();
