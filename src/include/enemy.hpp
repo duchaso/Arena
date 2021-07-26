@@ -1,22 +1,28 @@
-    #ifndef ENEMY_H
-    #define ENEMY_H
+#ifndef ENEMY_H
+#define ENEMY_H
 
-    #include<ncurses.h>
-    #include<vector>
+#include<ncurses.h>
+#include<vector>
+#include<queue>
+#include<utility>
 
-    class Enemy
-    {
-    private:
-        char character;
-        int x, y;
-        int xMax, yMax;
-        WINDOW* curwin;
-        std::vector<int> path;
+#include "board.hpp"
 
-    public:
-        Enemy(WINDOW* win, int x, int y);
+class Enemy
+{
+private:
+    char character;
+    int x, y;
+    int xMax, yMax;
+    char** map;
+    WINDOW* curwin;
+    std::vector<int> path;
 
+public:
+    Enemy(WINDOW* win, int x, int y);
+    int heuristic(int a, int b);
+    int pathfinding(int xs, int ys, int xf, int yf);
 
-    };
+};
 
-    #endif
+#endif

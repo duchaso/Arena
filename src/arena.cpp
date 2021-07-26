@@ -19,18 +19,8 @@ int main(int, char**) {
         p.display();
         wrefresh(board.getwin());
     }
-    printw("Hello");
-    //wrefresh(board.getwin());
-    char** c = Board::getscreen(board.getwin());
+    int k = e.pathfinding(5, 5, 10, 6);
     getch();
     endwin();
-
-    for (int i = 0; i < 35; i++)
-    {
-        for (int j = 0; j < 120; j++)
-        {
-            std::cout << c[i][j];
-        }
-        std::cout << "\n";
-    }
+    std::cout << k;
 }
