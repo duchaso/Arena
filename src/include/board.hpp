@@ -15,6 +15,7 @@ public:
 public:
     Board(int height, int width, int x, int y);
     static char** getscreen(WINDOW*win);
+    static void setscreen(WINDOW*win, char**c);
 };
 
 #endif

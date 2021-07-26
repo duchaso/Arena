@@ -22,6 +22,8 @@ public:
     Enemy(WINDOW* win, int x, int y);
     int heuristic(int a, int b);
     int pathfinding(int xs, int ys, int xf, int yf);
+    void display();
+    void drawPath(int* from, int id, int count);
 
 };
 

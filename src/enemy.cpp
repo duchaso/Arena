@@ -34,6 +34,7 @@ int Enemy::heuristic(int a, int b)
 int Enemy::pathfinding(int xs, int ys, int xf, int yf)
 {
     //std::pair<int, int> k;
+
 	std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>, CustomCompare> q;
 	int n = xMax * yMax;
 	int k = 0;
@@ -49,7 +50,7 @@ int Enemy::pathfinding(int xs, int ys, int xf, int yf)
 	q.push(std::make_pair(id, 0));
 	cost[id] = 0;
 	from[id] = -1;
-	map[ys][xs] = '0';
+	//map[ys][xs] = '0';
 	while (!q.empty())
 	{
 		id = q.top().first;
@@ -74,7 +75,7 @@ int Enemy::pathfinding(int xs, int ys, int xf, int yf)
 				cost[id + xMax] = cost[id] + 1;
 				from[id + xMax] = id;
 				//map[id / width + 1][id % width] = k % 10 + 48;
-				//map[id / xMax + 1][id % xMax] = '|';
+				//map[id / xMax + 1][id % xMax] = '^';
                 q.push(std::make_pair(id + xMax, cost[id + xMax] + heuristic(id, idf)));
 			}
 		}
@@ -102,9 +103,31 @@ int Enemy::pathfinding(int xs, int ys, int xf, int yf)
 		}
 		if (id == (yf * xMax + xf))
 		{
-			//drawPath(from, id, cost[id]);
+			drawPath(from, id, cost[id]);
+			Board::setscreen(curwin, map);
 			return cost[id];
 		}
 	}
+	
     return 0;
+}
+
+void Enemy::drawPath(int* from, int id, int count)
+{
+	int i = id;
+	while (from[i] != -1)
+	{
+		if (count % 36 > 9)
+			map[i / xMax][i % xMax] = 97 + (count % 36 - 10);
+		else
+			map[i / xMax][i % xMax] = 48 + count % 36;
+		i = from[i];
+		count--;
+	}
+	//map[i / xMax][i % xMax] = '0';
+}
+
+void Enemy::display()
+{
+  mvwaddch(curwin, y, x, character);
 }

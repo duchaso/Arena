@@ -34,3 +34,17 @@ char** Board::getscreen(WINDOW* win)
     }
     return c;
 }
+
+void Board::setscreen(WINDOW* win, char**c)
+{
+    int xMax, yMax;
+    getmaxyx(win, yMax, xMax);
+    for(int i = 0; i < yMax; i++)
+    {
+        for (int j = 0; j < xMax; j++)
+        {
+            mvwaddch(win, i, j, c[i][j]);
+        }
+        
+    }
+}
