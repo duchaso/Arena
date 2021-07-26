@@ -1,7 +1,11 @@
 #include <iostream>
+#include <ncurses.h>
 
 #include "arena.hpp"
 
 int main(int, char**) {
-    std::cout << "Hello, world!\n";
+    initscr();
+    printw("Hello");
+    getch();
+    endwin();
 }
