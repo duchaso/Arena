@@ -4,8 +4,14 @@
 Board::Board(int height, int width, int x, int y)
     : height(height), width(width), x(x), y(y)
 {
-    board = newwin(height, width, x, y);
-    box(board, 0, 0);
+    win = newwin(height, width, x, y);
+    box(win, 0, 0);
     refresh();
-    wrefresh(board);
+    wrefresh(win);
+}
+
+
+WINDOW* Board::getwin()
+{
+    return win;
 }

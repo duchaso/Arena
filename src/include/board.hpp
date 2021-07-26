@@ -9,7 +9,9 @@ private:
     int height, width;
     int x, y;
 
-    WINDOW* board; 
+    WINDOW* win; 
+public:
+    WINDOW* getwin();
 public:
     Board(int height, int width, int x, int y);
 };
