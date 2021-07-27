@@ -2,48 +2,17 @@
 
 
 //constructor
-Player::Player(WINDOW* win, int x, int y) : x(x), y(y) 
+Player::Player(WINDOW* win, int x1, int y1) 
 {
+    x = x1;
+    y = y1;
     getmaxyx(win, yMax, xMax);
     curwin = win;
     keypad(curwin, true);
 }
 
 
-
-
-void Player::mvup()
-{
-  mvwaddch(curwin, y, x, ' ');
-  y -= 1;
-  if(y < 1)
-    y = 1;
-}
-
-void Player::mvdown()
-{
-  mvwaddch(curwin, y, x, ' ');
-  y += 1;
-  if(y > yMax-2)
-    y = yMax-2;
-}
-
-void Player::mvleft()
-{
-  mvwaddch(curwin, y, x, ' ');
-  x -= 1;
-  if(x < 1)
-    x = 1;
-}
-
-void Player::mvright()
-{
-  mvwaddch(curwin, y, x, ' ');
-  x += 1;
-  if(x > xMax-2)
-    x = xMax-2;
-}
-
+//methods
 int Player::getmv()
 {
   int choice = wgetch(curwin);
@@ -65,9 +34,4 @@ int Player::getmv()
       break;
   }
   return choice;
-}
-
-void Player::display()
-{
-  mvwaddch(curwin, y, x, character);
 }
