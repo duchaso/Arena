@@ -5,7 +5,7 @@ find_package(Curses REQUIRED)
 include_directories(${CURSES_INCLUDE_DIR})
 
 include(CTest)
-set(SOURCES src/arena.cpp src/board.cpp src/player.cpp src/creature.cpp)
+set(SOURCES src/arena.cpp src/board.cpp src/creature.cpp src/player.cpp src/bot.cpp src/enemy.cpp)
 
 enable_testing()
 

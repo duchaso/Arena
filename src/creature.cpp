@@ -2,7 +2,10 @@
 
 //constructor
 
-
+Creature::Creature(WINDOW* win, int x, int y) : x(x), y(y), curwin(win)
+{
+    getmaxyx(win, yMax, xMax);
+}
 
 //methods
 void Creature::mvup()
@@ -40,4 +43,14 @@ void Creature::mvright()
 void Creature::display()
 {
   mvwaddch(curwin, y, x, character);
+}
+
+int Creature::getx()
+{
+  return x;
+}
+
+int Creature::gety()
+{
+  return y;
 }
