@@ -1,30 +1,18 @@
-#ifndef ENEMY_H
-#define ENEMY_H
+#ifndef BOTH
+#define BOT_H
 
-#include<ncurses.h>
-#include<vector>
-#include<queue>
-#include<utility>
+#include <ncurses.h>
 
-#include "board.hpp"
+#include "bot.hpp"
+#include "player.hpp"
 
-class Enemy
+class Enemy : public Bot
 {
 private:
-    char character;
-    int x, y;
-    int xMax, yMax;
-    char** map;
-    WINDOW* curwin;
-    std::vector<int> path;
 
 public:
     Enemy(WINDOW* win, int x, int y);
-    int heuristic(int a, int b);
-    int pathfinding(int xs, int ys, int xf, int yf);
-    void display();
-    void drawPath(int* from, int id, int count);
-
+    int gotoplayer(Player p, Board board);
 };
 
 #endif

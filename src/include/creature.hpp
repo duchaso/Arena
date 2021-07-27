@@ -11,11 +11,14 @@ protected:
     int x, y;
     int xMax, yMax;
 public:
-    virtual void mvup();
-    virtual void mvdown();
-    virtual void mvleft();
-    virtual void mvright();
-    virtual void display();
+    Creature(WINDOW* win, int x, int y);
+    void mvup();
+    void mvdown();
+    void mvleft();
+    void mvright();
+    void display();
+    int getx();
+    int gety();
 };
 
 #endif

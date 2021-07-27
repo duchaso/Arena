@@ -2,12 +2,9 @@
 
 
 //constructor
-Player::Player(WINDOW* win, int x1, int y1) 
+Player::Player(WINDOW* win, int x, int y) : Creature(win, x, y)
 {
-    x = x1;
-    y = y1;
-    getmaxyx(win, yMax, xMax);
-    curwin = win;
+    character = '@';
     keypad(curwin, true);
 }
 
